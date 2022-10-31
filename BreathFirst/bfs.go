@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func bfd(start string, adj map[string][]string) {
+func bfs(start string, adj map[string][]string) {
 	var q Queue
 	q.Push(start)
 
