@@ -11,4 +11,5 @@ func main() {
 	}
 
 	dfs("a", adj)
+	dfsRe("a", adj)
 }
