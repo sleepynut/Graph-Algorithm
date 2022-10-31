@@ -2,7 +2,7 @@ package main
 
 func main() {
 	adj := map[string][]string{
-		"a": {"b", "c"},
+		"a": {"c", "b"},
 		"b": {"d"},
 		"c": {"e"},
 		"d": {"f"},
