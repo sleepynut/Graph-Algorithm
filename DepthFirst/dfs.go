@@ -28,9 +28,9 @@ func dfsRe(current string, adj map[string][]string) {
 	// print current node
 	fmt.Print(current + ", ")
 
-	if len(adj[current]) == 0 {
-		return
-	}
+	// if len(adj[current]) == 0 {
+	// 	return
+	// }
 
 	for _, node := range adj[current] {
 		dfsRe(node, adj)
