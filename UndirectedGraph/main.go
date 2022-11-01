@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	u "github.com/sleepynut/Graph-Algorithm/Utils"
+)
 
 func main() {
-	s := NewSet()
+	s := u.NewSet()
 
 	s.Add("a")
 	s.Add("a")
@@ -30,9 +34,21 @@ func main() {
 
 	src := "j"
 	dst := "m"
-	visited := NewSet()
+	visited := u.NewSet()
 
 	fmt.Printf("hasPath from %s - %s: %t\n", src, dst, hasPath(graph, src, dst, &visited))
+
+	graph2 := map[string][]string{
+		"0": {"8", "1", "5"},
+		"1": {"0"},
+		"5": {"0", "8"},
+		"8": {"0", "5"},
+		"2": {"3", "4"},
+		"3": {"2", "4"},
+		"4": {"3", "2"},
+	}
+
+	fmt.Printf("Connected Component Count: %d\n", connectedCompCount(graph2))
 
 }
 
