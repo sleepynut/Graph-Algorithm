@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	u "github.com/sleepynut/Graph-Algorithm/Utils"
+)
 
 func main() {
 	adj := map[string][]string{
@@ -22,7 +26,7 @@ func main() {
 }
 
 func hasPath(graph map[string][]string, src string, dst string) bool {
-	var s Stack
+	var s u.Stack
 	var v string
 	var b bool
 	s.Push(src)

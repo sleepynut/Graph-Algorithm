@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	u "github.com/sleepynut/Graph-Algorithm/Utils"
+)
 
 func dfs(start string, adj map[string][]string) {
-	var s Stack
+	var s u.Stack
 	s.Push(start)
 
 	for {

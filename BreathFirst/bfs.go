@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	u "github.com/sleepynut/Graph-Algorithm/Utils"
+)
 
 func bfs(start string, adj map[string][]string) {
-	var q Queue
+	var q u.Queue
 	q.Push(start)
 
 	for {
