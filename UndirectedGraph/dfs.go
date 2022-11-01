@@ -92,16 +92,18 @@ func connectedCompCountRe(graph map[string][]string) int {
 	return count
 }
 
-func traverseCount(graph map[string][]string, src string, visited *u.Set, count *int) {
+func traverseCount(graph map[string][]string, src string, visited *u.Set) int {
 	if visited.Has(src) {
-		return
+		return 0
 	}
 
 	visited.Add(src)
-	*count++
+	count := 1
 	for _, neighbor := range graph[src] {
-		traverseCount(graph, neighbor, visited, count)
+		count += traverseCount(graph, neighbor, visited)
 	}
+
+	return count
 }
 
 func largestComponent(graph map[string][]string) int {
@@ -109,9 +111,7 @@ func largestComponent(graph map[string][]string) int {
 	visited := u.NewSet()
 
 	for k := range graph {
-		count := 0
-
-		traverseCount(graph, k, &visited, &count)
+		count := traverseCount(graph, k, &visited)
 
 		if count > largest {
 			largest = count
