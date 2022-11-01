@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	adj := map[string][]string{
 		"a": {"c", "b"},
@@ -11,4 +13,29 @@ func main() {
 	}
 
 	bfs("a", adj)
+	src := "d"
+	dst := "d"
+	fmt.Printf("Has Path from %s - %s: %t", src, dst, hasPath(adj, src, dst))
+}
+
+func hasPath(graph map[string][]string, src string, dst string) bool {
+	var (
+		q  Queue
+		el string
+	)
+
+	q.Push(src)
+
+	for !q.IsEmpty() {
+		el, _ = q.Pop()
+		if el == dst {
+			return true
+		}
+
+		for _, neighbor := range graph[el] {
+			q.Push(neighbor)
+		}
+	}
+
+	return false
 }
