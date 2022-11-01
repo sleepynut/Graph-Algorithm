@@ -62,3 +62,61 @@ func connectedCompCount(graph map[string][]string) int {
 
 	return count
 }
+
+func traverse(graph map[string][]string, src string, visited *u.Set) {
+	if visited.Has(src) {
+		return
+	}
+
+	// Add current node to visited set
+	visited.Add(src)
+	for _, neighbor := range graph[src] {
+		traverse(graph, neighbor, visited)
+	}
+}
+
+// count number of connected component recursively
+func connectedCompCountRe(graph map[string][]string) int {
+	s := u.NewSet()
+	count := 0
+
+	for k := range graph {
+		if s.Has(k) {
+			continue
+		}
+
+		traverse(graph, k, &s)
+		count++
+	}
+
+	return count
+}
+
+func traverseCount(graph map[string][]string, src string, visited *u.Set, count *int) {
+	if visited.Has(src) {
+		return
+	}
+
+	visited.Add(src)
+	*count++
+	for _, neighbor := range graph[src] {
+		traverseCount(graph, neighbor, visited, count)
+	}
+}
+
+func largestComponent(graph map[string][]string) int {
+	largest := 0
+	visited := u.NewSet()
+
+	for k := range graph {
+		count := 0
+
+		traverseCount(graph, k, &visited, &count)
+
+		if count > largest {
+			largest = count
+		}
+	}
+
+	return largest
+}
