@@ -65,6 +65,18 @@ func main() {
 	src = "w"
 	dst = "z"
 	fmt.Printf("Shortest path from %s - %s: %d\n", src, dst, shortestPath(graph3, src, dst))
+
+	grid := [][]string{
+		{"W", "L", "W", "W", "W"},
+		{"W", "L", "W", "W", "W"},
+		{"W", "W", "W", "L", "W"},
+		{"W", "W", "L", "L", "W"},
+		{"L", "W", "W", "L", "L"},
+		{"L", "L", "W", "W", "W"},
+	}
+
+	fmt.Printf("Island Count: %d\n", islandCount(grid))
+	fmt.Printf("Minimum Island: %d\n", minimumIsland(grid))
 }
 
 func buildGraph(edges [][]string) map[string][]string {
