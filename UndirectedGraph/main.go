@@ -53,8 +53,18 @@ func main() {
 
 	fmt.Printf("Largest component count: %d\n", largestComponent(graph2))
 
-	var qT u.QueueT[*u.Passed]
-	fmt.Println(qT.IsEmpty())
+	edges2 := [][]string{
+		{"w", "x"},
+		{"x", "y"},
+		{"z", "y"},
+		{"z", "v"},
+		{"w", "v"},
+	}
+
+	graph3 := buildGraph(edges2)
+	src = "w"
+	dst = "z"
+	fmt.Printf("Shortest path from %s - %s: %d\n", src, dst, shortestPath(graph3, src, dst))
 }
 
 func buildGraph(edges [][]string) map[string][]string {
