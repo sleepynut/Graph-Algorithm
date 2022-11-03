@@ -52,6 +52,9 @@ func main() {
 	fmt.Printf("Connected Component Count (Re): %d\n", connectedCompCountRe(graph2))
 
 	fmt.Printf("Largest component count: %d\n", largestComponent(graph2))
+
+	var qT u.QueueT[*u.Passed]
+	fmt.Println(qT.IsEmpty())
 }
 
 func buildGraph(edges [][]string) map[string][]string {
